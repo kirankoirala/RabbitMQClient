@@ -2,14 +2,15 @@
 using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Utility;
 
 namespace Receiver
 {
-    class Program
+    class Receiver
     {
         static void Main(string[] args)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost", Port = 32775, UserName = "testRabit", Password = "password" };
+            var factory = QueueProperties.ConnectionFactory;
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
